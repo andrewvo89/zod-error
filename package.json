@@ -1,0 +1,21 @@
+{
+  "name": "zod-error",
+  "version": "1.0.0",
+  "description": "Utilities to convert zod issues into a readable string",
+  "main": "index.js",
+  "repository": "https://github.com/andrewvo89/zod-error",
+  "author": "Andrew Vo-Nguyen",
+  "license": "MIT",
+  "private": false,
+  "devDependencies": {
+    "cz-conventional-changelog": "3.3.0"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "scripts": {
+    "commit": "cz"
+  }
+}
