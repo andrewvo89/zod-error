@@ -7,11 +7,15 @@ import { z } from 'zod';
  * @export
  * @param {unknown} error
  * @param {ErrorMessageOptions} [options]
+ * @return {*}  {Error}
  */
-export function errorHandler(error: unknown, options?: ErrorMessageOptions): void {
+export function generateError(error: unknown, options?: ErrorMessageOptions): Error {
   if (error instanceof z.ZodError) {
     const message = generateErrorMessage(error.issues, options);
-    throw new Error(message);
+    return new Error(message);
   }
-  throw error;
+  if (error instanceof Error) {
+    return error;
+  }
+  return new Error('Unknown error');
 }
