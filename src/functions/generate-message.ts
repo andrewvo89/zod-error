@@ -12,5 +12,6 @@ import { z } from 'zod';
  */
 export function generateErrorMessage(issues: z.ZodIssue[], options?: ErrorMessageOptions): string {
   const errorDelimiter = getErrorDelimiter(options?.delimiter?.error);
-  return issues.map((issue, index) => getErrorMessage(issue, index, options)).join(errorDelimiter);
+  const errorMessage = issues.map((issue, index) => getErrorMessage(issue, index, options)).join(errorDelimiter);
+  return `${options?.prefix ?? ''}${errorMessage}${options?.suffix ?? ''}`;
 }
