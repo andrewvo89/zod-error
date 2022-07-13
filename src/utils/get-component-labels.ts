@@ -1,5 +1,12 @@
 import { LabelOptions, Labels } from 'types';
 
+/**
+ * Gets component labels.
+ * Defaults to 'Code', 'Message' and 'Path'.
+ * @export
+ * @param {(LabelOptions | undefined)} labels
+ * @return {*}  {Labels}
+ */
 export function getComponentLabels(labels: LabelOptions | undefined): Labels {
   const labelsEnabled = labels?.enabled ?? true;
   if (!labelsEnabled) {

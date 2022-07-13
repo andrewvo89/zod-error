@@ -10,22 +10,33 @@ import {
 import { MessageOptions } from 'types';
 import { z } from 'zod';
 
+/**
+ * Generates an error message from Zod issues.
+ * @export
+ * @param {z.ZodIssue[]} issues
+ * @param {MessageOptions} [options]
+ * @return {*}  {string}
+ */
 export function generateMessage(issues: z.ZodIssue[], options?: MessageOptions): string {
-  // Error Delimeter
   const errorDelimiter = getErrorDelimiter(options?.delimiter);
-  // Component Delimeter
   const componentDelimeter = getComponentDelimiter(options?.components?.delimiter);
-  // Component Labels
   const labels = getComponentLabels(options?.components?.labels);
   return issues
     .map((issue, index) => {
-      // Error Prefix
+      const components = [
+        `${labels.code}${issue.code}`,
+        `${labels.path}${getPathString(issue.path, options?.path)}`,
+        `${labels.message}${issue.message}`,
+      ];
       const prefix = getErrorPrefix(options?.prefix, index);
-      // Error Suffix
+      if (prefix) {
+        components.unshift(prefix);
+      }
       const suffix = getErrorSuffix(options?.suffix, index);
-      // Path String
-      const pathString = getPathString(issue.path, options?.path);
-      return `${prefix}${labels.code}${issue.code}${componentDelimeter}${labels.path}${pathString}${componentDelimeter}${labels.message}${issue.message}${suffix}`;
+      if (suffix) {
+        components.push(suffix);
+      }
+      return components.join(componentDelimeter);
     })
     .join(errorDelimiter);
 }

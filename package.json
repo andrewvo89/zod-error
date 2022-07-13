@@ -30,6 +30,7 @@
     "zod": "^3.17.3"
   },
   "_moduleAliases": {
+    "functions": "src/functions",
     "utils": "src/utils"
   }
 }
