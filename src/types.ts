@@ -1,25 +1,51 @@
-export type ObjectNotation = {
+type EnablePathOptions = {
+  enabled: true;
+  label?: string;
+  transform?: (params: { component: string; label: string; value: string }) => string;
+};
+
+type DisablePath = {
+  enabled: false;
+};
+
+type EnableCode = {
+  enabled: true;
+  label?: string;
+  transform?: (params: { component: string; label: string; value: string }) => string;
+};
+
+type DisableCode = {
+  enabled: false;
+};
+
+type EnableMessage = {
+  enabled: true;
+  label?: string;
+  transform?: (params: { component: string; label: string; value: string }) => string;
+};
+
+type DisableMessage = {
+  enabled: false;
+};
+
+export type ObjectNotation = EnablePathOptions & {
   type: 'objectNotation';
   arraySquareBrackets?: boolean;
 };
 
-export type ZodPathArray = {
+export type ZodPathArray = EnablePathOptions & {
   type: 'zodPathArray';
 };
 
-export type Breadcrumbs = {
+export type Breadcrumbs = EnablePathOptions & {
   type: 'breadcrumbs';
   delimeter?: string;
   arraySquareBrackets?: boolean;
 };
 
-export type DisableLabel = {
-  enabled: false;
-};
-
-export type EnableLabel = {
-  enabled: true;
-  custom?: Partial<Labels>;
+export type Delimiter = {
+  error?: string;
+  component?: string;
 };
 
 export type Labels = {
@@ -28,20 +54,17 @@ export type Labels = {
   message: string;
 };
 
-export type PathOptions = ObjectNotation | ZodPathArray | Breadcrumbs;
-
-export type LabelOptions = EnableLabel | DisableLabel;
-
-export interface MessageOptions {
-  delimiter?: string;
-  components?: {
-    code?: boolean;
-    path?: boolean;
-    message?: boolean;
-    delimiter?: string;
-    labels?: LabelOptions;
-  };
-  path?: PathOptions;
-  prefix?: ((index: number) => string) | string;
-  suffix?: ((index: number) => string) | string;
+export interface ErrorMessageOptions {
+  delimiter?: Delimiter;
+  code?: EnableCode | DisableCode;
+  message?: EnableMessage | DisableMessage;
+  path?: ObjectNotation | ZodPathArray | Breadcrumbs | DisablePath;
+  maxErrors?: number;
+  transform?: (params: {
+    errorMessage: string;
+    index: number;
+    codeComponent: string;
+    messageComponent: string;
+    pathComponent: string;
+  }) => string;
 }

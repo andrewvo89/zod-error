@@ -40,4 +40,6 @@ dist/**/*
 # ignore yarn.lock
 yarn.lock
 
+# misc
 src/test.ts
+lib

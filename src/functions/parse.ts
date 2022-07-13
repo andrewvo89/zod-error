@@ -1,5 +1,5 @@
-import { MessageOptions } from 'types';
-import { generateMessage } from 'functions';
+import { ErrorMessageOptions } from 'types';
+import { generateErrorMessage } from 'functions';
 import { z } from 'zod';
 
 /**
@@ -8,13 +8,13 @@ import { z } from 'zod';
  * @template T
  * @param {z.ZodSchema<T>} schema
  * @param {unknown} data
- * @param {MessageOptions} [options]
+ * @param {ErrorMessageOptions} [options]
  * @return {*}  {T}
  */
-export function parse<T>(schema: z.ZodSchema<T>, data: unknown, options?: MessageOptions): T {
+export function parse<T>(schema: z.ZodSchema<T>, data: unknown, options?: ErrorMessageOptions): T {
   const result = schema.safeParse(data);
   if (!result.success) {
-    const message = generateMessage(result.error.issues, options);
+    const message = generateErrorMessage(result.error.issues, options);
     throw new Error(message);
   }
   return result.data;

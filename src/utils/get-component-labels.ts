@@ -1,19 +1,15 @@
-import { LabelOptions, Labels } from 'types';
+import { ErrorMessageOptions, Labels } from 'types';
 
 /**
  * Gets component labels.
- * Defaults to 'Code', 'Message' and 'Path'.
+ * Defaults to 'Code: ', 'Message: ' and 'Path: '.
  * @export
- * @param {(LabelOptions | undefined)} labels
+ * @param {ErrorMessageOptions} [options]
  * @return {*}  {Labels}
  */
-export function getComponentLabels(labels: LabelOptions | undefined): Labels {
-  const labelsEnabled = labels?.enabled ?? true;
-  if (!labelsEnabled) {
-    return { code: '', message: '', path: '' };
-  }
-  const code = `${labels?.enabled ? labels?.custom?.code : 'Code'}: `;
-  const message = `${labels?.enabled ? labels?.custom?.message : 'Message'}: `;
-  const path = `${labels?.enabled ? labels?.custom?.path : 'Path'}: `;
-  return { code: labelsEnabled ? code : '', message: labelsEnabled ? message : '', path: labelsEnabled ? path : '' };
+export function getComponentLabels(options?: ErrorMessageOptions): Labels {
+  const code = options?.code?.enabled && options.code.label ? options.code.label : 'Code: ';
+  const message = options?.message?.enabled && options.message.label ? options.message.label : 'Message: ';
+  const path = options?.path?.enabled && options.path.label ? options.path.label : 'Path: ';
+  return { code, message, path };
 }
