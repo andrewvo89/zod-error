@@ -1,5 +1,7 @@
 import { ErrorMessageOptions, Labels } from 'types';
 
+import { getLabel } from 'utils/get-label';
+
 /**
  * Gets component labels.
  * Defaults to 'Code: ', 'Message: ' and 'Path: '.
@@ -8,8 +10,8 @@ import { ErrorMessageOptions, Labels } from 'types';
  * @return {*}  {Labels}
  */
 export function getComponentLabels(options?: ErrorMessageOptions): Labels {
-  const code = options?.code?.enabled && options.code.label ? options.code.label : 'Code: ';
-  const message = options?.message?.enabled && options.message.label ? options.message.label : 'Message: ';
-  const path = options?.path?.enabled && options.path.label ? options.path.label : 'Path: ';
+  const code = getLabel(options?.code, 'Code: ');
+  const message = getLabel(options?.message, 'Message: ');
+  const path = getLabel(options?.path, 'Path: ');
   return { code, message, path };
 }

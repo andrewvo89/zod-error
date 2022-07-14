@@ -1,63 +1,23 @@
-type EnablePathOptions = {
+export type EnableCode = {
   enabled: true;
-  label?: string;
+  label?: string | null;
   transform?: (params: TransformComponentParams) => string;
 };
 
-type DisablePath = {
+export type DisableCode = {
   enabled: false;
 };
 
-type EnableCode = {
+export type CodeOptions = EnableCode | DisableCode;
+
+export type EnablePathOptions = {
   enabled: true;
-  label?: string;
+  label?: string | null;
   transform?: (params: TransformComponentParams) => string;
 };
 
-type DisableCode = {
+export type DisablePath = {
   enabled: false;
-};
-
-type EnableMessage = {
-  enabled: true;
-  label?: string;
-  transform?: (params: TransformComponentParams) => string;
-};
-
-type DisableMessage = {
-  enabled: false;
-};
-
-type Delimiter = {
-  error?: string;
-  component?: string;
-};
-
-type TransformComponentParams = { component: string; label: string; value: string };
-
-type TransformErrorMessageParams = {
-  errorMessage: string;
-  index: number;
-  codeComponent: string;
-  messageComponent: string;
-  pathComponent: string;
-};
-
-export interface ErrorMessageOptions {
-  delimiter?: Delimiter;
-  code?: EnableCode | DisableCode;
-  message?: EnableMessage | DisableMessage;
-  path?: ObjectNotation | ZodPathArray | Breadcrumbs | DisablePath;
-  maxErrors?: number;
-  transform?: (params: TransformErrorMessageParams) => string;
-  prefix?: string;
-  suffix?: string;
-}
-
-export type Labels = {
-  code: string;
-  path: string;
-  message: string;
 };
 
 export type ObjectNotation = EnablePathOptions & {
@@ -74,3 +34,61 @@ export type Breadcrumbs = EnablePathOptions & {
   delimeter?: string;
   arraySquareBrackets?: boolean;
 };
+
+export type PathOptions = ObjectNotation | ZodPathArray | Breadcrumbs | DisablePath;
+
+export type EnableMessage = {
+  enabled: true;
+  label?: string | null;
+  transform?: (params: TransformComponentParams) => string;
+};
+
+export type DisableMessage = {
+  enabled: false;
+};
+
+export type MessageOptions = EnableMessage | DisableMessage;
+
+export type DelimiterOptions = {
+  error?: string;
+  component?: string;
+};
+
+export type TransformComponentParams = { component: string; label: string; value: string };
+
+export type TransformErrorParams = {
+  codeComponent: string;
+  errorMessage: string;
+  index: number;
+  messageComponent: string;
+  pathComponent: string;
+};
+
+export type SafeParseSuccess<T> = {
+  success: true;
+  data: T;
+};
+
+export type SafeParseFail = {
+  success: false;
+  error: { message: string };
+};
+
+export type SafeParseReturnType<T> = SafeParseSuccess<T> | SafeParseFail;
+
+export type Labels = {
+  code: string;
+  path: string;
+  message: string;
+};
+
+export interface ErrorMessageOptions {
+  code?: CodeOptions;
+  delimiter?: DelimiterOptions;
+  maxErrors?: number;
+  message?: MessageOptions;
+  path?: PathOptions;
+  prefix?: string;
+  suffix?: string;
+  transform?: (params: TransformErrorParams) => string;
+}

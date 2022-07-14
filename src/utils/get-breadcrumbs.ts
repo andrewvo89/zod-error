@@ -3,7 +3,7 @@ import { z } from 'zod';
 
 /**
  * Adds breadcrumbs to a path.
- * Defaults to >.
+ * Delimiter defaults to >.
  * @export
  * @param {z.ZodIssue['path']} path
  * @param {Breadcrumbs} options

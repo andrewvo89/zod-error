@@ -29,7 +29,7 @@ export function getErrorMessage(issue: z.ZodIssue, index: number, options?: Erro
 
   const pathString = getPathString(issue.path, options?.path);
   const pathComponent = `${labels.path}${pathString}`;
-  const pathEnabled = options?.code?.enabled ?? true;
+  const pathEnabled = options?.path?.enabled ?? true;
   if (pathEnabled) {
     if (options?.path?.enabled && options.path.transform) {
       components.push(options.path.transform({ component: pathComponent, label: labels.path, value: pathString }));
