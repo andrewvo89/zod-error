@@ -31,9 +31,9 @@
     "zod": "^3.17.3"
   },
   "_moduleAliases": {
-    "functions": "src/functions",
-    "types": "src/types",
-    "utils": "src/utils"
+    "functions": "./src/functions",
+    "types": "./src/types",
+    "utils": "./src/utils"
   },
   "files": [
     "lib/**/*"
