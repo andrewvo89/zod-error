@@ -19,7 +19,7 @@
 - [Installation](#installation)
 - [Usage](#usage)
 - [Authors](#authors)
-- [Acknowledgments](#acknowledgement)
+- [Acknowledgments](#acknowledgements)
 
 ## About
 
@@ -129,14 +129,14 @@ Error messages are completely customizable from label names to delimiters, prefi
 
 ### PathOptions
 
-| Property             | Value                                                                      | Description                                                                                                                                                             |
-| -------------------- | -------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| arraySquareBrackets? | boolean                                                                    | Adds square brackets around index number in the path. Only available if `enabled` is `true` and `type` is `objectNotation` or `breadcrumbs`. Defaults to `true`.        |
-| delimiter?           | string                                                                     | Set a custom delimeter between each path element. Only available if `enabled` is `true` and `type` is `breadcrumbs`. Defaults to `>`.                                   |
-| enabled              | boolean                                                                    | Display or hide the path component of the error message. Defaults to `true`.                                                                                            |
-| label?               | string \| null                                                             | Set a custom label. Defaults to `Message: `. Only available if `enabled` is `true`.                                                                                     |
-| transform?           | (params: [TransformComponentParams](#transformcomponentoptions)) => string | A custom function to transform the format of the message component. Only available if `enabled` is `true`.                                                              |
-| type                 | 'objectNotation' \| 'zodPathArray' \| 'breadcrumbds'                       | Sets the style of the path string.<br/>objectNotation = car.wheels[1].tyre <br/>zodPathArray = ["car", "wheels", 1, "tyre"]<br/>breadcrumbs = car > wheels > [1] > tyre |
+| Property             | Value                                                                      | Description                                                                                                                                                              |
+| -------------------- | -------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| arraySquareBrackets? | boolean                                                                    | Adds square brackets around index number in the path. Only available if `enabled` is `true` and `type` is `objectNotation` or `breadcrumbs`. Defaults to `true`.         |
+| delimiter?           | string                                                                     | Set a custom delimeter between each path element. Only available if `enabled` is `true` and `type` is `breadcrumbs`. Defaults to `>`.                                    |
+| enabled              | boolean                                                                    | Display or hide the path component of the error message. Defaults to `true`.                                                                                             |
+| label?               | string \| null                                                             | Set a custom label. Defaults to `Message: `. Only available if `enabled` is `true`.                                                                                      |
+| transform?           | (params: [TransformComponentParams](#transformcomponentoptions)) => string | A custom function to transform the format of the message component. Only available if `enabled` is `true`.                                                               |
+| type                 | 'objectNotation' \| 'zodPathArray' \| 'breadcrumbs'                        | Sets the style of the path string.<br/>objectNotation = car.wheels[1].tyre <br/>zodPathArray = ["car", "wheels", 1, "tyre"]<br/>breadcrumbs = car > wheels > [1] > tyre. |
 
 ### TransformComponentParams
 
@@ -179,6 +179,7 @@ const options: ErrorMessageOptions = {
   },
   transform: ({ errorMessage, index }) => `Error #${index + 1}: ${errorMessage}`,
 };
+
 const schema = z.object({
   color: z.nativeEnum(Color),
   shape: z.string(),
@@ -238,6 +239,7 @@ const schema = z.object({
   item: z.string(),
   price: z.number(),
 });
+
 const data = {
   dates: { purchased: 'yesterday' },
   item: 1,
@@ -290,6 +292,7 @@ const schema = z.object({
   animal: z.enum(['🐶', '🐱', '🐵']),
   quantity: z.number().gte(1),
 });
+
 const data = {
   animal: '🐼',
   quantity: 0,

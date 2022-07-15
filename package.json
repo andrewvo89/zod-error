@@ -2,7 +2,8 @@
   "name": "zod-error",
   "version": "1.0.0",
   "description": "Utilities to format and customize Zod error messages",
-  "main": "index.js",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "repository": "https://github.com/andrewvo89/zod-error",
   "author": "Andrew Vo-Nguyen",
   "license": "MIT",
@@ -33,5 +34,8 @@
     "functions": "src/functions",
     "types": "src/types",
     "utils": "src/utils"
-  }
+  },
+  "files": [
+    "lib/**/*"
+  ]
 }
