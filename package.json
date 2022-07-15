@@ -1,13 +1,29 @@
 {
   "name": "zod-error",
+  "license": "MIT",
+  "author": "Andrew Vo-Nguyen <hello@andrewvo.co> (https://andrewvo.co)",
   "version": "1.0.0",
   "description": "Utilities to format and customize Zod error messages",
-  "main": "lib/index.js",
-  "types": "lib/index.d.ts",
+  "homepage": "https://github.com/andrewvo89/zod-error",
   "repository": "https://github.com/andrewvo89/zod-error",
-  "author": "Andrew Vo-Nguyen",
-  "license": "MIT",
-  "private": false,
+  "keywords": [
+    "zod",
+    "error",
+    "validation",
+    "nodejs",
+    "typescript"
+  ],
+  "scripts": {
+    "commit": "cz",
+    "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
+    "lint": "eslint",
+    "build": "rm -r lib && tsc -p tsconfig.json",
+    "pack": "npm pack",
+    "publish": "npm publish"
+  },
+  "dependencies": {
+    "zod": "^3.17.3"
+  },
   "devDependencies": {
     "@types/node": "^18.0.3",
     "@typescript-eslint/eslint-plugin": "^5.30.6",
@@ -23,12 +39,8 @@
       "path": "./node_modules/cz-conventional-changelog"
     }
   },
-  "scripts": {
-    "commit": "cz"
-  },
-  "dependencies": {
-    "zod": "^3.17.3"
-  },
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "files": [
     "lib/**/*"
   ]
