@@ -2,10 +2,10 @@
 
 <div align="center">
 
-[![Status](https://img.shields.io/badge/status-active-success.svg)]()
-[![GitHub Issues](https://img.shields.io/github/issues/andrewvo89/zod-error/The-Documentation-Compendium.svg)](https://github.com/andrewvo89/zod-error/The-Documentation-Compendium/issues)
-[![GitHub Pull Requests](https://img.shields.io/github/issues-pr/andrewvo89/zod-error/The-Documentation-Compendium.svg)](https://github.com/andrewvo89/zod-error/The-Documentation-Compendium/pulls)
-[![License](https://img.shields.io/badge/license-MIT-blue.svg)](/LICENSE)
+[![Status](https://img.shields.io/badge/status-active-blue)](https://github.com/andrewvo89/zod-error)
+[![GitHub Issues](https://img.shields.io/github/issues/andrewvo89/zod-error?color=blue)](https://github.com/andrewvo89/zod-error/issues)
+[![GitHub Pull Requests](https://img.shields.io/github/issues-pr/andrewvo89/zod-error?color=blue)](https://github.com/andrewvo89/zod-error/pulls)
+[![License](https://img.shields.io/github/license/andrewvo89/zod-error?color=blue)](/LICENSE)
 
 </div>
 

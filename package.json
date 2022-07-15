@@ -17,7 +17,7 @@
     "commit": "cz",
     "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
     "lint": "eslint",
-    "build": "rm -r lib && tsc -p tsconfig.json",
+    "build": "eslint && (rm -r lib || tsc -p tsconfig.json)",
     "pack": "npm pack",
     "publish": "npm publish"
   },
