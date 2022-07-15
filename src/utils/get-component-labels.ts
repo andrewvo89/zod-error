@@ -1,6 +1,6 @@
-import { ErrorMessageOptions, Labels } from 'types';
+import { ErrorMessageOptions, Labels } from '../types';
 
-import { getLabel } from 'utils/get-label';
+import { getLabel } from '../utils/get-label';
 
 /**
  * Gets component labels.

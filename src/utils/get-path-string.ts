@@ -1,6 +1,6 @@
-import { getBreadcrumbs, getObjectNotation, getZodPathArray } from 'utils';
+import { getBreadcrumbs, getObjectNotation, getZodPathArray } from '../utils';
 
-import { ErrorMessageOptions } from 'types';
+import { ErrorMessageOptions } from '../types';
 import { z } from 'zod';
 
 export function getPathString(path: z.ZodIssue['path'], options?: ErrorMessageOptions['path']): string {

@@ -1,4 +1,4 @@
-import { ObjectNotation } from 'types';
+import { ObjectNotation } from '../types';
 import { z } from 'zod';
 
 /**
