@@ -19,7 +19,9 @@
     "lint": "eslint",
     "build": "eslint && (rm -r lib || tsc -p tsconfig.json)",
     "pack": "npm pack",
-    "publish": "npm publish"
+    "publish:patch": "yarn build && npm version patch && npm publish",
+    "publish:minor": "yarn build && npm version minor && npm publish",
+    "publish:major": "yarn build && npm version major && npm publish"
   },
   "dependencies": {
     "zod": "^3.17.3"
