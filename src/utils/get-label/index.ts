@@ -1,4 +1,4 @@
-type Component = { enabled: true; label?: string | null } | { enabled: false } | undefined;
+import { Component } from './types';
 
 /**
  * Gets a component label with fallback support.
@@ -9,7 +9,13 @@ type Component = { enabled: true; label?: string | null } | { enabled: false } |
  * @return {*}  {string}
  */
 export function getLabel<T extends Component>(component: T, fallback: string): string {
-  if (component === undefined || component.enabled === false || component.label === undefined) {
+  if (component === undefined) {
+    return fallback;
+  }
+  if (component.enabled === false) {
+    return '';
+  }
+  if (component.label === undefined) {
     return fallback;
   }
   if (component.label === null) {

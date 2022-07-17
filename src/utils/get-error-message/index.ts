@@ -1,6 +1,6 @@
-import { getComponentDelimiter, getComponentLabels, getPathString } from '../utils';
+import { getComponentDelimiter, getComponentLabels, getPathString } from '..';
 
-import { ErrorMessageOptions } from '../types';
+import { ErrorMessageOptions } from '../../types';
 import { z } from 'zod';
 
 /**

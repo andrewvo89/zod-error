@@ -1,4 +1,4 @@
-import { ObjectNotation } from '../types';
+import { ObjectNotation } from '../../types';
 import { z } from 'zod';
 
 /**
@@ -14,6 +14,6 @@ export function getObjectNotation(path: z.ZodIssue['path'], options: ObjectNotat
     if (typeof key === 'number' && arraySquareBrackets) {
       return `${str}[${key}]`;
     }
-    return [str, key].filter((s) => s).join('.');
+    return [str, key].filter((s) => typeof s === 'number' || !!s).join('.');
   }, '');
 }

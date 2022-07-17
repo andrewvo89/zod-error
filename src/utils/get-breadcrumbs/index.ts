@@ -1,4 +1,4 @@
-import { Breadcrumbs } from '../types';
+import { Breadcrumbs } from '../../types';
 import { z } from 'zod';
 
 /**
