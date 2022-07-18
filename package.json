@@ -22,7 +22,8 @@
     "publish:patch": "yarn build && npm version patch && npm publish",
     "publish:minor": "yarn build && npm version minor && npm publish",
     "publish:major": "yarn build && npm version major && npm publish",
-    "test": "jest"
+    "test": "jest",
+    "test:coverage": "yarn test --coverage"
   },
   "dependencies": {
     "zod": "^3.17.3"

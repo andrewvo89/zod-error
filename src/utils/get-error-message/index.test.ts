@@ -56,3 +56,22 @@ test('error message with a transform function', () =>
   expect(
     getErrorMessage(issues[0], 0, { transform: ({ index, errorMessage }) => `Error #${index + 1}: ${errorMessage}` }),
   ).toBe('Error #1: Code: invalid_type ~ Path: dates.purchased ~ Message: Expected date, received string'));
+
+test('error message with a transform function for each component', () =>
+  expect(
+    getErrorMessage(issues[0], 0, {
+      code: {
+        enabled: true,
+        transform: ({ component }) => `<${component}>`,
+      },
+      message: {
+        enabled: true,
+        transform: ({ component }) => `<${component}>`,
+      },
+      path: {
+        enabled: true,
+        type: 'objectNotation',
+        transform: ({ component }) => `<${component}>`,
+      },
+    }),
+  ).toBe('<Code: invalid_type> ~ <Path: dates.purchased> ~ <Message: Expected date, received string>'));

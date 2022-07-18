@@ -1,5 +1,5 @@
-import { ErrorMessageOptions } from '../types';
-import { generateErrorMessage } from '../functions';
+import { ErrorMessageOptions } from '../../types';
+import { generateErrorMessage } from '..';
 import { z } from 'zod';
 
 /**

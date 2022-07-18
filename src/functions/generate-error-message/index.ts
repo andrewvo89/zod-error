@@ -1,6 +1,6 @@
-import { getErrorDelimiter, getErrorMessage } from '../utils';
+import { getErrorDelimiter, getErrorMessage } from '../../utils';
 
-import { ErrorMessageOptions } from '../types';
+import { ErrorMessageOptions } from '../../types';
 import { z } from 'zod';
 
 /**

@@ -1,6 +1,6 @@
-import { ErrorMessageOptions, SafeParseReturnType } from '../types';
+import { ErrorMessageOptions, SafeParseReturnType } from '../../types';
 
-import { generateErrorMessage } from '../functions';
+import { generateErrorMessage } from '..';
 import { z } from 'zod';
 
 /**
