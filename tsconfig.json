@@ -93,6 +93,6 @@
     "skipLibCheck": true /* Skip type checking all .d.ts files. */
   },
   "exclude": [
-    "jest.config.js"
+    "jest.config.ts"
   ]
 }
