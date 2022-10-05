@@ -158,9 +158,9 @@ Error messages are completely customizable from label names to delimiters, prefi
 
 ### Examples
 
-There are 6 ways to consume Zod Error. `generateMessage()`, `generateError()`, `parse()`, `parseAsync()`, `safeParse()` and `safeParseAsync()`.
+There are 6 ways to consume Zod Error. `generateErrorMessage()`, `generateError()`, `parse()`, `parseAsync()`, `safeParse()` and `safeParseAsync()`.
 
-#### `generateMessage(issues: z.ZodIssue[], options?: ErrorMessageOptions): string`
+#### `generateErrorMessage(issues: z.ZodIssue[], options?: ErrorMessageOptions): string`
 
 Formats an array of Zod Issues as a result of `z.parse()`, `z.parseAsync()`, `z.safeParse()` or `z.safeParseAsync()` and outputs as a single string. Multiple errors are concatenated into a single readable string.
 
@@ -204,7 +204,7 @@ Error Message:
 Error #1: Code: invalid_enum_value ~ Path: color ~ Message: Invalid enum value. Expected 'Red' | 'Blue', received 'Green' 🔥 Error #2: Code: invalid_type ~ Path: shape ~ Message: Required 🔥 Error #3: Code: too_small ~ Path: size ~ Message: Number must be greater than 0
 ```
 
-#### `generateError(issues: z.ZodIssue[], options?: ErrorMessageOptions): string`
+#### `generateError(issues: z.ZodIssue[], options?: ErrorMessageOptions): Error`
 
 Formats an array of Zod Issues as a result of `z.parse()`, `z.parseAsync()`, `z.safeParse()` or `z.safeParseAsync()` and outputs as a JavaScript Error object. Multiple errors are concatenated into a single readable string.
 
