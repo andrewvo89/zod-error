@@ -26,7 +26,7 @@
     "test:coverage": "yarn test --coverage"
   },
   "dependencies": {
-    "zod": "^3.17.3"
+    "zod": "^3.20.2"
   },
   "devDependencies": {
     "@types/jest": "^28.1.6",
