@@ -14,14 +14,14 @@
     "typescript"
   ],
   "scripts": {
+    "build": "eslint && (rm -r lib || tsc -p tsconfig.json)",
     "commit": "cz",
     "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
     "lint": "eslint",
-    "build": "eslint && (rm -r lib || tsc -p tsconfig.json)",
     "pack": "npm pack",
-    "publish:patch": "yarn build && npm version patch && npm publish",
-    "publish:minor": "yarn build && npm version minor && npm publish",
-    "publish:major": "yarn build && npm version major && npm publish",
+    "release:major": "yarn build && npm version major && npm publish",
+    "release:minor": "yarn build && npm version minor && npm publish",
+    "release:patch": "yarn build && npm version patch && npm publish",
     "test": "jest",
     "test:coverage": "yarn test --coverage"
   },

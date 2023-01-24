@@ -9,16 +9,16 @@ import { z } from 'zod';
  * .refine() or .transform() functions.
  * @export
  * @template T
- * @param {z.ZodSchema<T>} schema
+ * @param {T} schema
  * @param {unknown} data
  * @param {ErrorMessageOptions} [options]
- * @return {*}  {Promise<SafeParseReturnType<T>>}
+ * @return {*}  {Promise<SafeParseReturnType<T['_output']>>}
  */
-export async function safeParseAsync<T>(
-  schema: z.ZodSchema<T>,
+export async function safeParseAsync<T extends z.ZodTypeAny>(
+  schema: T,
   data: unknown,
   options?: ErrorMessageOptions,
-): Promise<SafeParseReturnType<T>> {
+): Promise<SafeParseReturnType<T['_output']>> {
   const result = await schema.safeParseAsync(data);
   if (!result.success) {
     const message = generateErrorMessage(result.error.issues, options);

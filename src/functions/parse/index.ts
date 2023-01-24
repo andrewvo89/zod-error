@@ -6,12 +6,12 @@ import { z } from 'zod';
  * Parses a Zod schema throws a generic error.
  * @export
  * @template T
- * @param {z.ZodSchema<T>} schema
+ * @param {T} schema
  * @param {unknown} data
  * @param {ErrorMessageOptions} [options]
- * @return {*}  {T}
+ * @return {*}  {T['_output']}
  */
-export function parse<T>(schema: z.ZodSchema<T>, data: unknown, options?: ErrorMessageOptions): T {
+export function parse<T extends z.ZodTypeAny>(schema: T, data: unknown, options?: ErrorMessageOptions): T['_output'] {
   const result = schema.safeParse(data);
   if (!result.success) {
     const message = generateErrorMessage(result.error.issues, options);

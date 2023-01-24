@@ -7,16 +7,16 @@ import { z } from 'zod';
  * Safe parses a Zod schema.
  * @export
  * @template T
- * @param {z.ZodSchema<T>} schema
+ * @param {T} schema
  * @param {unknown} data
  * @param {ErrorMessageOptions} [options]
- * @return {*}  {SafeParseReturnType<T>}
+ * @return {*}  {SafeParseReturnType<T['_output']>}
  */
-export function safeParse<T>(
-  schema: z.ZodSchema<T>,
+export function safeParse<T extends z.ZodTypeAny>(
+  schema: T,
   data: unknown,
   options?: ErrorMessageOptions,
-): SafeParseReturnType<T> {
+): SafeParseReturnType<T['_output']> {
   const result = schema.safeParse(data);
   if (!result.success) {
     const message = generateErrorMessage(result.error.issues, options);

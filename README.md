@@ -260,7 +260,7 @@ Error Message:
 Zod Path: ["dates", "purchased"] - Expected date, received string | Zod Path: ["dates", "fulfilled"] - Required
 ```
 
-#### `parse<T>(schema: z.ZodSchema<T>, data: unknown, options?: ErrorMessageOptions): T`
+#### `parse<T extends z.ZodTypeAny>(schema: T, data: unknown, options?: ErrorMessageOptions): T['_output']`
 
 Replaces Zod's `.parse()` function by replacing Zod's `ZodError` with a generic JavaScript `Error` object where the custom formatted message can be accessed on `error.message`.
 
@@ -325,7 +325,7 @@ Note:
 
 > If your schema contains an async `.refine()` or `.transform()` function, use `parseAsync()` instead.
 
-#### `safeParse<T>(schema: z.ZodSchema<T>, data: unknown, options?: ErrorMessageOptions): SafeParseReturnType<T>`
+#### `safeParse<T extends z.ZodTypeAny>(schema: T, data: unknown, options?: ErrorMessageOptions): SafeParseReturnType<T['_output']`
 
 Replaces Zod's `.safeParse()` function by replacing Zod's `SafeParseReturnType` with a similar return type where if `result.success` is `false`, the custom formatted error message will be available on `result.error.message`.
 
