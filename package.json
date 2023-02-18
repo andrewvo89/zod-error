@@ -2,7 +2,7 @@
   "name": "zod-error",
   "license": "MIT",
   "author": "Andrew Vo-Nguyen <hello@andrewvo.co> (https://andrewvo.co)",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "description": "Utilities to format and customize Zod error messages",
   "homepage": "https://github.com/andrewvo89/zod-error",
   "repository": "https://github.com/andrewvo89/zod-error",
