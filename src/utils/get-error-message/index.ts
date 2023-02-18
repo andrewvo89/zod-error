@@ -17,37 +17,36 @@ export function getErrorMessage(issue: z.ZodIssue, index: number, options?: Erro
   const labels = getComponentLabels(options);
   const components: string[] = [];
 
-  const codeComponent = `${labels.code}${issue.code}`;
+  let codeComponent = `${labels.code}${issue.code}`;
   const codeEnabled = options?.code?.enabled ?? true;
   if (codeEnabled) {
     if (options?.code?.enabled && options.code.transform) {
-      components.push(options.code.transform({ component: codeComponent, label: labels.code, value: issue.code }));
-    } else {
-      components.push(codeComponent);
+      codeComponent = options.code.transform({ component: codeComponent, label: labels.code, value: issue.code });
     }
+    components.push(codeComponent);
   }
 
   const pathString = getPathString(issue.path, options?.path);
-  const pathComponent = `${labels.path}${pathString}`;
+  let pathComponent = `${labels.path}${pathString}`;
   const pathEnabled = options?.path?.enabled ?? true;
   if (pathEnabled) {
     if (options?.path?.enabled && options.path.transform) {
-      components.push(options.path.transform({ component: pathComponent, label: labels.path, value: pathString }));
-    } else {
-      components.push(pathComponent);
+      pathComponent = options.path.transform({ component: pathComponent, label: labels.path, value: pathString });
     }
+    components.push(pathComponent);
   }
 
-  const messageComponent = `${labels.message}${issue.message}`;
+  let messageComponent = `${labels.message}${issue.message}`;
   const messageEnabled = options?.message?.enabled ?? true;
   if (messageEnabled) {
     if (options?.message?.enabled && options.message.transform) {
-      components.push(
-        options.message.transform({ component: messageComponent, label: labels.message, value: issue.message }),
-      );
-    } else {
-      components.push(messageComponent);
+      messageComponent = options.message.transform({
+        component: messageComponent,
+        label: labels.message,
+        value: issue.message,
+      });
     }
+    components.push(messageComponent);
   }
 
   const errorMessage = components.join(componentDelimeter);

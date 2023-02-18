@@ -75,3 +75,24 @@ test('error message with a transform function for each component', () =>
       },
     }),
   ).toBe('<Code: invalid_type> ~ <Path: dates.purchased> ~ <Message: Expected date, received string>'));
+
+test('component transformations are passed on to final transform', () =>
+  expect(
+    getErrorMessage(issues[0], 0, {
+      code: {
+        enabled: true,
+        transform: ({ component }) => `<${component}>`,
+      },
+      message: {
+        enabled: true,
+        transform: ({ component }) => `<${component}>`,
+      },
+      path: {
+        enabled: true,
+        type: 'objectNotation',
+        transform: ({ component }) => `<${component}>`,
+      },
+      transform: ({ codeComponent, messageComponent, pathComponent }) =>
+        `<${codeComponent}> ~ <${pathComponent}> ~ <${messageComponent}>`,
+    }),
+  ).toBe('<<Code: invalid_type>> ~ <<Path: dates.purchased>> ~ <<Message: Expected date, received string>>'));
