@@ -14,7 +14,7 @@
     "typescript"
   ],
   "scripts": {
-    "build": "eslint && (rm -r lib || tsc -p tsconfig.json)",
+    "build": "eslint && rm -r -f lib && tsc -p tsconfig.json",
     "commit": "cz",
     "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
     "lint": "eslint",
