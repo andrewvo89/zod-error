@@ -1,3 +1,5 @@
+import { z } from 'zod';
+
 export type EnableCode = {
   enabled: true;
   label?: string | null;
@@ -60,6 +62,7 @@ export type TransformErrorParams = {
   codeComponent: string;
   errorMessage: string;
   index: number;
+  issue: z.ZodIssue;
   messageComponent: string;
   pathComponent: string;
 };

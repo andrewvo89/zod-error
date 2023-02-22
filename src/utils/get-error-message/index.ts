@@ -51,7 +51,7 @@ export function getErrorMessage(issue: z.ZodIssue, index: number, options?: Erro
 
   const errorMessage = components.join(componentDelimeter);
   if (options?.transform) {
-    return options.transform({ errorMessage, index, codeComponent, messageComponent, pathComponent });
+    return options.transform({ pathComponent, messageComponent, issue, index, errorMessage, codeComponent });
   }
   return errorMessage;
 }

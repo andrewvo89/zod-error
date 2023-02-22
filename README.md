@@ -148,13 +148,14 @@ Error messages are completely customizable from label names to delimiters, prefi
 
 ### TransformErrorParams
 
-| Property         | Value  | Description                                                               |
-| ---------------- | ------ | ------------------------------------------------------------------------- |
-| codeComponent    | string | The transformed code component string. Defaults to `${label}${value}`.    |
-| errorMessage     | string | The transformed error message consisting of all components concatentated. |
-| index            | string | The index of the current error message.                                   |
-| messageComponent | string | The transformed message component string. Defaults to `${label}${value}`. |
-| pathComponent    | string | The transformed path component string. Defaults to `${label}${value}`.    |
+| Property         | Value      | Description                                                               |
+| ---------------- | ---------- | ------------------------------------------------------------------------- |
+| codeComponent    | string     | The transformed code component string. Defaults to `${label}${value}`.    |
+| errorMessage     | string     | The transformed error message consisting of all components concatentated. |
+| index            | string     | The index of the current error message.                                   |
+| issue            | z.ZodIssue | The original ZodIssue object.                                             |
+| messageComponent | string     | The transformed message component string. Defaults to `${label}${value}`. |
+| pathComponent    | string     | The transformed path component string. Defaults to `${label}${value}`.    |
 
 ### Examples
 
