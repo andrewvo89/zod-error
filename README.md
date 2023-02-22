@@ -93,24 +93,24 @@ pnpm add zod-error
 
 Error messages are completely customizable from label names to delimiters, prefixes, suffixes and the inclusion/exclusion of components (code, path, message). An options argument can be passed to any Zod Error function as the last argument to customize the error message.
 
-| Property   | Value                                                              | Description                                                               |
-| ---------- | ------------------------------------------------------------------ | ------------------------------------------------------------------------- |
-| code?      | [CodeOptions](#codeoptions)                                        | Options to customize the code component of the error message.             |
-| delimiter? | [DelimiterOptions](#delimiteroptions)                              | Set the delimiter between error messages and between components.          |
-| maxErrors? | number                                                             | Maximum amount of error messages to display in final concatenated string. |
-| message?   | [MessageOptions](#messageoptions)                                  | Options to customize the message component of the error message.          |
-| path?      | [PathOptions](#pathoptions)                                        | Options to customize the code path of the error message.                  |
-| prefix?    | string                                                             | Add a prefix to the start of the final concatenated message.              |
-| suffix?    | string                                                             | Add a suffix to the end of the final concatenated string.                 |
-| transform? | (params: [TransformErrorParams](#transformerroroptions)) => string | A custom function to transform the format of each error message.          |
+| Property   | Value                                                             | Description                                                               |
+| ---------- | ----------------------------------------------------------------- | ------------------------------------------------------------------------- |
+| code?      | [CodeOptions](#codeoptions)                                       | Options to customize the code component of the error message.             |
+| delimiter? | [DelimiterOptions](#delimiteroptions)                             | Set the delimiter between error messages and between components.          |
+| maxErrors? | number                                                            | Maximum amount of error messages to display in final concatenated string. |
+| message?   | [MessageOptions](#messageoptions)                                 | Options to customize the message component of the error message.          |
+| path?      | [PathOptions](#pathoptions)                                       | Options to customize the code path of the error message.                  |
+| prefix?    | string                                                            | Add a prefix to the start of the final concatenated message.              |
+| suffix?    | string                                                            | Add a suffix to the end of the final concatenated string.                 |
+| transform? | (params: [TransformErrorParams](#transformerrorparams)) => string | A custom function to transform the format of each error message.          |
 
 ### CodeOptions
 
-| Property   | Value                                                                      | Description                                                                                             |
-| ---------- | -------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
-| enabled    | boolean                                                                    | Display or hide the code component of the error message. Defaults to `true`.                            |
-| label?     | string \| null                                                             | Set a custom label. Defaults to `Code: `. Only available if `enabled` is `true`.                        |
-| transform? | (params: [TransformComponentParams](#transformcomponentoptions)) => string | A custom function to transform the format of the code component. Only available if `enabled` is `true`. |
+| Property   | Value                                                                     | Description                                                                                             |
+| ---------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
+| enabled    | boolean                                                                   | Display or hide the code component of the error message. Defaults to `true`.                            |
+| label?     | string \| null                                                            | Set a custom label. Defaults to `Code: `. Only available if `enabled` is `true`.                        |
+| transform? | (params: [TransformComponentParams](#transformcomponentparams)) => string | A custom function to transform the format of the code component. Only available if `enabled` is `true`. |
 
 ### DelimiterOptions
 
@@ -121,22 +121,22 @@ Error messages are completely customizable from label names to delimiters, prefi
 
 ### MessageOptions
 
-| Property   | Value                                                                      | Description                                                                                                |
-| ---------- | -------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
-| enabled    | boolean                                                                    | Display or hide the message component of the error message. Defaults to `true`.                            |
-| label?     | string \| null                                                             | Set a custom label. Defaults to `Message: `. Only available if `enabled` is `true`.                        |
-| transform? | (params: [TransformComponentParams](#transformcomponentoptions)) => string | A custom function to transform the format of the message component. Only available if `enabled` is `true`. |
+| Property   | Value                                                                     | Description                                                                                                |
+| ---------- | ------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
+| enabled    | boolean                                                                   | Display or hide the message component of the error message. Defaults to `true`.                            |
+| label?     | string \| null                                                            | Set a custom label. Defaults to `Message: `. Only available if `enabled` is `true`.                        |
+| transform? | (params: [TransformComponentParams](#transformcomponentparams)) => string | A custom function to transform the format of the message component. Only available if `enabled` is `true`. |
 
 ### PathOptions
 
-| Property             | Value                                                                      | Description                                                                                                                                                              |
-| -------------------- | -------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| arraySquareBrackets? | boolean                                                                    | Adds square brackets around index number in the path. Only available if `enabled` is `true` and `type` is `objectNotation` or `breadcrumbs`. Defaults to `true`.         |
-| delimiter?           | string                                                                     | Set a custom delimeter between each path element. Only available if `enabled` is `true` and `type` is `breadcrumbs`. Defaults to `>`.                                    |
-| enabled              | boolean                                                                    | Display or hide the path component of the error message. Defaults to `true`.                                                                                             |
-| label?               | string \| null                                                             | Set a custom label. Defaults to `Message: `. Only available if `enabled` is `true`.                                                                                      |
-| transform?           | (params: [TransformComponentParams](#transformcomponentoptions)) => string | A custom function to transform the format of the message component. Only available if `enabled` is `true`.                                                               |
-| type                 | 'objectNotation' \| 'zodPathArray' \| 'breadcrumbs'                        | Sets the style of the path string.<br/>objectNotation = car.wheels[1].tyre <br/>zodPathArray = ["car", "wheels", 1, "tyre"]<br/>breadcrumbs = car > wheels > [1] > tyre. |
+| Property             | Value                                                                     | Description                                                                                                                                                              |
+| -------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| arraySquareBrackets? | boolean                                                                   | Adds square brackets around index number in the path. Only available if `enabled` is `true` and `type` is `objectNotation` or `breadcrumbs`. Defaults to `true`.         |
+| delimiter?           | string                                                                    | Set a custom delimeter between each path element. Only available if `enabled` is `true` and `type` is `breadcrumbs`. Defaults to `>`.                                    |
+| enabled              | boolean                                                                   | Display or hide the path component of the error message. Defaults to `true`.                                                                                             |
+| label?               | string \| null                                                            | Set a custom label. Defaults to `Message: `. Only available if `enabled` is `true`.                                                                                      |
+| transform?           | (params: [TransformComponentParams](#transformcomponentparams)) => string | A custom function to transform the format of the message component. Only available if `enabled` is `true`.                                                               |
+| type                 | 'objectNotation' \| 'zodPathArray' \| 'breadcrumbs'                       | Sets the style of the path string.<br/>objectNotation = car.wheels[1].tyre <br/>zodPathArray = ["car", "wheels", 1, "tyre"]<br/>breadcrumbs = car > wheels > [1] > tyre. |
 
 ### TransformComponentParams
 
