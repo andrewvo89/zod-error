@@ -1,8 +1,5 @@
 {
-  "extends": [
-    "plugin:@typescript-eslint/recommended",
-    "prettier"
-  ],
+  "extends": ["plugin:@typescript-eslint/recommended", "prettier"],
   "parser": "@typescript-eslint/parser",
   "rules": {
     "@typescript-eslint/ban-ts-comment": "off",
@@ -21,21 +18,6 @@
     ],
     "no-duplicate-imports": "error",
     "object-shorthand": "error",
-    "sort-imports": [
-      "error",
-      {
-        "allowSeparatedGroups": false,
-        "ignoreCase": false,
-        "ignoreDeclarationSort": false,
-        "ignoreMemberSort": false,
-        "memberSyntaxSortOrder": [
-          "none",
-          "all",
-          "multiple",
-          "single"
-        ]
-      }
-    ],
     "spaced-comment": "error"
   }
 }

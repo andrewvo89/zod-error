@@ -23,7 +23,10 @@
 
 ## About
 
-Zod Error converts and formats Zod Issues into a customizable error message string that can be consumed by various applications such as front end error message modals or api error messages.
+Zod Error converts and formats Zod Issues into a customizable error message string that can be consumed by various applications such as browser error message modals or server api error messages.
+
+[Zod v4](https://zod.dev/v4) has a simple API to stringify errors. It may be sufficient enough for your needs:
+https://zod.dev/error-formatting?id=zprettifyerror
 
 ### Basic Usage
 
@@ -53,6 +56,14 @@ into this:
 ```
 Error #1: Code: invalid_type ~ Path: name ~ Message: Required | Error #2: Code: invalid_type ~ Path: pets[1] ~ Message: Expected string, received number
 ```
+
+## Versions
+
+With the release of [Zod v4](https://zod.dev/v4), `zod-error` has moved to v2 to meet the new API.
+| Zod | Zod Error |
+|-----|-----------|
+| 3.x.x | 1.x.x |
+| 4.x.x | 2.x.x |
 
 ## Installation
 
@@ -148,20 +159,20 @@ Error messages are completely customizable from label names to delimiters, prefi
 
 ### TransformErrorParams
 
-| Property         | Value      | Description                                                               |
-| ---------------- | ---------- | ------------------------------------------------------------------------- |
-| codeComponent    | string     | The transformed code component string. Defaults to `${label}${value}`.    |
-| errorMessage     | string     | The transformed error message consisting of all components concatentated. |
-| index            | string     | The index of the current error message.                                   |
-| issue            | z.ZodIssue | The original ZodIssue object.                                             |
-| messageComponent | string     | The transformed message component string. Defaults to `${label}${value}`. |
-| pathComponent    | string     | The transformed path component string. Defaults to `${label}${value}`.    |
+| Property         | Value            | Description                                                               |
+| ---------------- | ---------------- | ------------------------------------------------------------------------- |
+| codeComponent    | string           | The transformed code component string. Defaults to `${label}${value}`.    |
+| errorMessage     | string           | The transformed error message consisting of all components concatentated. |
+| index            | string           | The index of the current error message.                                   |
+| issue            | z.core.$ZodIssue | The original ZodIssue object.                                             |
+| messageComponent | string           | The transformed message component string. Defaults to `${label}${value}`. |
+| pathComponent    | string           | The transformed path component string. Defaults to `${label}${value}`.    |
 
 ### Examples
 
 There are 6 ways to consume Zod Error. `generateErrorMessage()`, `generateError()`, `parse()`, `parseAsync()`, `safeParse()` and `safeParseAsync()`.
 
-#### `generateErrorMessage(issues: z.ZodIssue[], options?: ErrorMessageOptions): string`
+#### `generateErrorMessage(issues: z.core.$ZodIssue[], options?: ErrorMessageOptions): string`
 
 Formats an array of Zod Issues as a result of `z.parse()`, `z.parseAsync()`, `z.safeParse()` or `z.safeParseAsync()` and outputs as a single string. Multiple errors are concatenated into a single readable string.
 
@@ -182,7 +193,7 @@ const options: ErrorMessageOptions = {
 };
 
 const schema = z.object({
-  color: z.nativeEnum(Color),
+  color: z.enum(Color),
   shape: z.string(),
   size: z.number().gt(0),
 });
@@ -205,7 +216,7 @@ Error Message:
 Error #1: Code: invalid_enum_value ~ Path: color ~ Message: Invalid enum value. Expected 'Red' | 'Blue', received 'Green' 🔥 Error #2: Code: invalid_type ~ Path: shape ~ Message: Required 🔥 Error #3: Code: too_small ~ Path: size ~ Message: Number must be greater than 0
 ```
 
-#### `generateError(issues: z.ZodIssue[], options?: ErrorMessageOptions): Error`
+#### `generateError(issues: z.core.$ZodIssue[], options?: ErrorMessageOptions): Error`
 
 Formats an array of Zod Issues as a result of `z.parse()`, `z.parseAsync()`, `z.safeParse()` or `z.safeParseAsync()` and outputs as a JavaScript Error object. Multiple errors are concatenated into a single readable string.
 
@@ -340,7 +351,7 @@ const options: ErrorMessageOptions = {
 };
 
 const schema = z.object({
-  id: z.string().uuid(),
+  id: z.uuid(),
   timestamp: z.number(),
   message: z.string().min(5),
 });

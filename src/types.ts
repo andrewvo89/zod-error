@@ -62,7 +62,7 @@ export type TransformErrorParams = {
   codeComponent: string;
   errorMessage: string;
   index: number;
-  issue: z.ZodIssue;
+  issue: z.core.$ZodIssue;
   messageComponent: string;
   pathComponent: string;
 };
@@ -95,3 +95,5 @@ export interface ErrorMessageOptions {
   suffix?: string;
   transform?: (params: TransformErrorParams) => string;
 }
+
+export type Component = { enabled: true; label?: string | null } | { enabled: false } | undefined;
